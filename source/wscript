@@ -78,7 +78,8 @@ def configure(ctx):
                 ''' % (h in 'smb_cli.h smb_cliraw.h smb_composite.h util/debug.h'.split(), h))
 
             libs = []
-            for l in 'cli-ldap dcerpc dcerpc-samba errors popt talloc ndr-standard samba-hostconfig samba-credentials smbclient-raw'.split():
+            smblibs = "cli-ldap-samba4 dcerpc-samba-samba4 dcerpc-samba4 errors-samba4 popt talloc ndr-standard samba-hostconfig samba-credentials smbclient-raw samba-util samba-debug-samba4"
+            for l in smblibs.split():
                 if ctx.check(lib=l, libpath=ctx.env.SAMBA_LIBS, mandatory=False):
                     libs.append(l)
                 else:
